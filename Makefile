@@ -29,13 +29,13 @@ template: ## Template helm chart for local testing.
 lint: ## Lint helm chart.
 	helm lint chart --values chart/values.yaml --debug
 
-unit-test: ## Execute Unit tests via Container  -c "/bin/sh"
+unit-test-docker: ## Execute Unit tests via Container  -c "/bin/sh"
 	$(info Running unit tests...)
 	@docker run \
 		-v $(shell pwd)/chart:/apps/\
 		-it --rm  $(DOCKER_HELM_UNITITEST_IMAGE) -f tests/*.yaml .
 
 unit-test-local: ## Execute Unit tests locally
-	@helm unittest -f 'tests/unit/*.yaml' chart
+	@helm unittest -f 'tests/*.yaml' chart
 
-test: unit-test ## Run all available tests
+test: unit-test-docker ## Run all available tests

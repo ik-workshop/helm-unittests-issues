@@ -1,0 +1,23 @@
+{{- if .Values.metrics.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: prometheus-backend
+  labels:
+    release: prometheus-operator
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      service-type: backend
+  namespaceSelector:
+  matchNames:
+  - {{ .Release.Namespace | quote }}
+  endpoints:
+  - port: http
+  path: '/actuator/prometheus'
+  interval: {{ .Values.metrics.interval }}
+  scrapeTimeout: {{ .Values.metrics.scrapeTimeout }}
+  targetLabels:
+  - app.kubernetes.io/name
+{{- end }}
