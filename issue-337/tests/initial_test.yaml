@@ -1,0 +1,17 @@
+uite: Test default
+release:
+  name: default
+  namespace: default
+tests:
+  - it: Test example
+    template: servicemonitor.yaml
+    documentIndex: 0
+    set:
+      metrics:
+        enabled: true
+    asserts:
+      - containsDocument:
+          kind: ServiceMonitor
+          apiVersion: monitoring.coreos.com/v1
+          # name: prometheus-backend
+          # namespace: default
