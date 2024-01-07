@@ -1,17 +1,28 @@
 .EXPORT_ALL_VARIABLES:
+.ONESHELL:
+.DEFAULT_GOAL := help
 
 # skopeo list-tags --no-creds docker://helmunittest/helm-unittest
 DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.13.3-0.4.0
+LOCAL_UNIT_TEST := $(HOME)/source/self/go-workshop/helm-unittest/untt
 
-SUPPORTED := chart issue-337
+SUPPORTED := chart \
+	issue-337
 
-check-issue: # export folder=chart
-ifeq ($(filter $(folder),$(SUPPORTED)),)
-	$(error $(folder) is not supported. Supported: $(SUPPORTED))
-endif
+FILTER_FOLDER := $(filter $(folder),$(SUPPORTED))
 
+.PHONY: help
 help:
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+.PHONY: check-issue
+check-issue: # export folder=chart
+ifndef folder
+	$(error The folder variable is not set '$(SUPPORTED)'.)
+endif
+ifeq ($(FILTER_FOLDER),)
+		$(error $(folder) is not supported. Supported: '$(SUPPORTED)'.)
+endif
 
 hooks: ## install pre commit.
 	@pre-commit install
@@ -46,6 +57,7 @@ unit-test-docker: check-issue ## Execute Unit tests via Container  -c "/bin/sh"
 		-it --rm  $(DOCKER_HELM_UNITITEST_IMAGE) -f tests/*.yaml .
 
 unit-test-local: check-issue ## Execute Unit tests locally
-	@helm unittest -f 'tests/*.yaml' $(folder)
+	# @helm unittest -f 'tests/*.yaml' $(folder)
+	@$(LOCAL_UNIT_TEST) --debug -f 'tests/*.yaml' $(folder)
 
-test: unit-test-docker ## Run all available tests
+test: unit-test-local ## Run all available tests

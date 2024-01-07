@@ -13,5 +13,5 @@ tests:
       - containsDocument:
           kind: ServiceMonitor
           apiVersion: monitoring.coreos.com/v1
-          # name: prometheus-backend
-          # namespace: default
+          name: prometheus-backend
+          namespace: default
