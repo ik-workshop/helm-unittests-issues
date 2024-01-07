@@ -1,0 +1,10 @@
+suite: spark-operator
+templates:
+  - rbac.yaml
+tests:
+  - it: Should contain both ClusterRole and ClusterRoleBinding documents
+    asserts:
+      - containsDocument:
+          any: true
+      - hasDocuments:
+          count: 2
