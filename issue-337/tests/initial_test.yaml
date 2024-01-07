@@ -1,4 +1,4 @@
-uite: Test default
+suite: Test default
 release:
   name: default
   namespace: default

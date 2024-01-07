@@ -20,4 +20,5 @@ spec:
   scrapeTimeout: {{ .Values.metrics.scrapeTimeout }}
   targetLabels:
   - app.kubernetes.io/name
+  timestamp: '{{ dateInZone "2006-01-02T15:04:05.000Z" (now) "UTC" }}'
 {{- end }}
