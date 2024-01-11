@@ -2,13 +2,14 @@
 .ONESHELL:
 .DEFAULT_GOAL := help
 
-# skopeo list-tags --no-creds docker://helmunittest/helm-unittest
+# skopeo list-tags --no-creds docker://helmunittest/helm-unittest "3.13.3-0.4.1",
 DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.13.3-0.4.0
 LOCAL_UNIT_TEST := $(HOME)/source/self/go-workshop/helm-unittest/untt
 
 SUPPORTED := chart \
 	issue-268 \
-	issue-337
+	issue-337 \
+	issue-275
 
 FILTER_FOLDER := $(filter $(folder),$(SUPPORTED))
 
