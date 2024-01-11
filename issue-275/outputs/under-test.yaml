@@ -1,0 +1,45 @@
+---
+# Source: chart/templates/under-test.yaml
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: NutanixMachineTemplate
+metadata:
+  name: unittest-mt-another-template
+spec:
+  something: "true"
+  # omitted for brevity..
+---
+# Source: chart/templates/under-test.yaml
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: NutanixMachineTemplate
+metadata:
+  name: unittest-mt-great-template
+spec:
+  something: "true"
+  # omitted for brevity..
+---
+# Source: chart/templates/under-test.yaml
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: NutanixMachineTemplate
+metadata:
+  name: unittest-mt-template-v2
+spec:
+  something: "true"
+  # omitted for brevity..
+---
+# Source: chart/templates/under-test.yaml
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: NutanixMachineTemplate
+metadata:
+  name: unittest-mt-template-v3
+spec:
+  something: "true"
+  # omitted for brevity..
+---
+# Source: chart/templates/under-test.yaml
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: NutanixMachineTemplate
+metadata:
+  name: unittest-mt-template-v4
+spec:
+  something: "true"
+  # omitted for brevity..

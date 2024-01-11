@@ -1,0 +1,42 @@
+---
+suite: "test multiple machine templates"
+set:
+  name: "unittest"
+  virtualIp: "1.2.3.4"
+tests:
+- it: "should configure machine templates based on values"
+  documentSelector:
+    path: "metadata.name"
+    value: "unittest-mt-great-template"
+  set:
+    machineTemplates:
+      great-template:
+        cpuSockets: 16
+        memorySize: "64Gi"
+        diskSize: "200Gi"
+        imageName: "ubuntu-2204-kube-v1.28.5"
+      another-template:
+        cpuSockets: 10
+        memorySize: "12Gi"
+        diskSize: "200Gi"
+        imageName: "ubuntu-2204-kube-v1.28.5"
+      template-v2:
+        cpuSockets: 10
+        memorySize: "12Gi"
+        diskSize: "200Gi"
+        imageName: "ubuntu-2204-kube-v1.28.5"
+      template-v3:
+        cpuSockets: 10
+        memorySize: "12Gi"
+        diskSize: "200Gi"
+        imageName: "ubuntu-2204-kube-v1.28.5"
+      template-v4:
+        cpuSockets: 10
+        memorySize: "12Gi"
+        diskSize: "200Gi"
+        imageName: "ubuntu-2204-kube-v1.28.5"
+  asserts:
+  - containsDocument:
+      apiVersion: "infrastructure.cluster.x-k8s.io/v1beta1"
+      kind: "NutanixMachineTemplate"
+      name: "unittest-mt-great-template"
