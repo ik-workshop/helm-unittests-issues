@@ -3,7 +3,7 @@
 .DEFAULT_GOAL := help
 
 # skopeo list-tags --no-creds docker://helmunittest/helm-unittest "3.13.3-0.4.1",
-DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.12.3-0.3.5
+DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.13.3-0.4.1
 LOCAL_UNIT_TEST := $(HOME)/source/self/go-workshop/helm-unittest/untt
 
 SUPPORTED := chart \
@@ -61,7 +61,7 @@ unit-test-docker: check-issue ## Execute Unit tests via Container  -c "/bin/sh"
 		-it --rm  $(DOCKER_HELM_UNITITEST_IMAGE) --debug -f tests/*.yaml  .
 
 unit-test-local: check-issue ## Execute Unit tests locally
-	@helm unittest -f 'tests/*.yaml' $(folder)
-	# @$(LOCAL_UNIT_TEST) --debug -f 'tests/*.yaml' $(folder)
+	# @helm unittest -f 'tests/*.yaml' $(folder)
+	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' $(folder)
 
 test: unit-test-local ## Run all available tests

@@ -1,0 +1,3 @@
+---
+{{- $_ := .Values.ingress.rules | required "A set of .Values.ingress.rules is required" -}}
+test: 123

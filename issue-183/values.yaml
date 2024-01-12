@@ -1,5 +1,15 @@
 ---
-slackAlertChannel: ~
+commitSha: 12345
+environment: foo
+codeRepo: https://github.com/myco/helm-charts
+ingress:
+  rules:
+    - host: "foo.com" # not under test here
+resources: {}
+
+ingress:
+  rules: ~
+
+slackAlertChannel: asdfasdf
 datadog:
-#   monitors:
-#     slackAlertChannel: second-channel
+  monitors:

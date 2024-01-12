@@ -1,0 +1,24 @@
+---
+globallyRequiredValues: &globallyRequiredValues
+  commitSha: 12345
+  environment: foo
+  codeRepo: https://github.com/myco/helm-charts
+  ingress:
+    rules:
+      - host: "foo.com" # not under test here
+  resources: {}
+
+suite: "test paradox"
+templates:
+  - templates/second-fail.yaml
+tests:
+  - it: requires ingress rules
+    set:
+      <<: *globallyRequiredValues
+      ingress.rules: ~
+    asserts:
+      # - equal:
+      #     path: test
+      #     value: 123
+      - failedTemplate:
+          errorMessage: A set of .Values.ingress.rules is required
