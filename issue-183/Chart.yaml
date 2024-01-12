@@ -1,6 +1,8 @@
 apiVersion: v2
 name: chart
-description: A Helm chart for helm-unittest issue https://github.com/helm-unittest/helm-unittest/issues/254. Not a path
+description: A Helm chart for helm-unittest issue https://github.com/helm-unittest/helm-unittest/issues/183. ~ is a nill value
+
+# The tilde is one of the ways the null value can be written. Most parsers also accept an empty value for null, and of course null , Null and NULL . These are defined in the first two lines of the regular expressions for the core schema tags in the YAML standard
 
 # A chart can be either an 'application' or a 'library' chart.
 #

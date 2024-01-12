@@ -49,7 +49,8 @@ cleanup:## Cleanup outputs
 template: ## Template helm chart for local testing.
 	@helm template chart $(folder) \
 		--output-dir output -n default \
-		-f $(folder)/values.yaml
+		-f $(folder)/values.yaml \
+		--debug
 
 lint: ## Lint helm chart.
 	helm lint chart --values chart/values.yaml --debug

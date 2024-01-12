@@ -1,3 +1,5 @@
 ---
-{{- $_ := .Values.ingress.rules | required "A set of .Values.ingress.rules is required" -}}
+
 test: 123
+ppc: {{ typeOf .Values.ingress.rules }}
+hah: {{ .Values.ingress.rules | quote }}

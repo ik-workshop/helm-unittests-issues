@@ -1,0 +1,3 @@
+---
+# Source: chart/templates/should-fail.yaml
+test: asdfasdf

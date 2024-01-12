@@ -1,0 +1,5 @@
+---
+# Source: chart/templates/second-fail.yaml
+test: 123
+ppc: <nil>
+hah:
