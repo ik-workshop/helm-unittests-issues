@@ -1,0 +1,5 @@
+---
+slackAlertChannel: ~
+datadog:
+#   monitors:
+#     slackAlertChannel: second-channel

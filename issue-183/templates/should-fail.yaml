@@ -1,0 +1,5 @@
+---
+{{- define "lib.slackChannel" -}}
+test: {{ print ((coalesce .Values.slackAlertChannel (.Values.datadog.monitors).slackAlertChannel) | required "A valid .Values.slackAlertChannel is required") }}
+{{- end -}}
+{{- include "lib.slackChannel" . }}
