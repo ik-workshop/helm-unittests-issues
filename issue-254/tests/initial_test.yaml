@@ -1,0 +1,21 @@
+---
+suite: "test paradox"
+templates:
+  - templates/under-test.yaml
+tests:
+- it: "should test paradox"
+  asserts:
+    - equal:
+        path: metadata.name
+        value: test-me
+    - matchRegex:
+      # - path: spec.templateKeys[0].template
+      #   pattern: name=my-app
+    - contains:
+        path: spec.templateKeys[0].template.spring.application.name
+        content: phony-service.phony:graphql
+        count: 1
+    # - matchRegex:
+    #   - path: spec.templateKeys[0].template
+    #     pattern: spring.application.name=my-app
+# not supported

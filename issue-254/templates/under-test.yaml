@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-me
+spec:
+  templateKeys:
+    - key : config.yaml
+      template: |
+        server.port=8888
+        spring.application.name=my-app
