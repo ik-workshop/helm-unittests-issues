@@ -22,3 +22,6 @@ tests:
       #     value: 123
       - failedTemplate:
           errorMessage: A set of .Values.ingress.rules is required
+
+test: {{ .Values.ingress.rules  }}
+type-of: {{ typeOf .Values.ingress.rules }}

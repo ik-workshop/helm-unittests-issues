@@ -1,5 +1,0 @@
----
-
-test: 123
-ppc: {{ typeOf .Values.ingress.rules }}
-hah: {{ .Values.ingress.rules | quote }}

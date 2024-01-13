@@ -9,10 +9,6 @@
 [![](https://img.shields.io/github/repo-size/ik-workshop/helm-unittests-issues)](https://github.com/ik-workshop/helm-unittests-issues)
 ![](https://img.shields.io/github/languages/top/ik-workshop/helm-unittests-issues?color=green&logo=markdown&logoColor=blue)
 
----
-
-[![governance][governance-badge]][governance-action]
-[![governance.link-checker][governance.link-checker.badge]][governance.link-checker.status]
 
 ---
 

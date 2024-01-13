@@ -3,7 +3,7 @@
 .DEFAULT_GOAL := help
 
 # skopeo list-tags --no-creds docker://helmunittest/helm-unittest "3.13.3-0.4.1",
-DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.13.3-0.4.1
+DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.11.1-0.3.0
 LOCAL_UNIT_TEST := $(HOME)/source/self/go-workshop/helm-unittest/untt
 
 SUPPORTED := chart \
@@ -47,9 +47,10 @@ cleanup:## Cleanup outputs
 	@rm -rf output
 
 template: ## Template helm chart for local testing.
-	@helm template chart $(folder) \
+	helm template chart $(folder) \
 		--output-dir output -n default \
 		-f $(folder)/values.yaml \
+		--set ingress.rules=abra-cadabra-v2 \
 		--debug
 
 lint: ## Lint helm chart.
@@ -61,8 +62,18 @@ unit-test-docker: check-issue ## Execute Unit tests via Container  -c "/bin/sh"
 		-v $(shell pwd)/$(folder):/apps/\
 		-it --rm  $(DOCKER_HELM_UNITITEST_IMAGE) --debug -f tests/*.yaml  .
 
-unit-test-local: check-issue ## Execute Unit tests locally
-	# @helm unittest -f 'tests/*.yaml' $(folder)
+# helm plugin install https://github.com/helm-unittest/helm-unittest.git
+unit-test-plugin: check-issue ## Execute Unit tests locally with plugin
+	@helm unittest -f 'tests/*.yaml' $(folder)
+
+unit-test-loop: check-issue ## Execute in the loop. 20 times
+	@number=1 ; while [[ $$number -le 30 ]] ; do \
+        $(MAKE) unit-test-plugin  ; \
+				$(MAKE) unit-test-docker ; \
+        ((number = number + 1)) ; \
+  done
+
+unit-test-local: check-issue ## Execute Unit tests with locally build
 	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' $(folder)
 
 test: unit-test-local ## Run all available tests

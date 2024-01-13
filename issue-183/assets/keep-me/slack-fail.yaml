@@ -3,3 +3,7 @@
 test: {{ print ((coalesce .Values.slackAlertChannel (.Values.datadog.monitors).slackAlertChannel) | required "A valid .Values.slackAlertChannel is required") }}
 {{- end -}}
 {{- include "lib.slackChannel" . }}
+
+test: {{ .Values.ingress.rules }}
+type-of: {{ typeOf .Values.ingress.rules }}
+in-quotes: {{ .Values.ingress.rules | quote }}

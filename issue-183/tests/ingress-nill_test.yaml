@@ -1,0 +1,75 @@
+---
+globallyRequiredValues: &globallyRequiredValues
+  commitSha: 12345
+  environment: foo
+  codeRepo: https://github.com/myco/helm-charts
+  ingress:
+    rules:
+      - host: "foo.com" # not under test here
+  resources: {}
+
+suite: "test paradox"
+templates:
+  - templates/ingress-fail.yaml
+tests:
+  - it: Should catch error when "ingress:\nrules:" and merge values and second ingress.rules is nil e.g. tilde ~
+    set:
+      <<: *globallyRequiredValues
+      ingress:
+        rules: ~
+    asserts:
+      - failedTemplate:
+          errorMessage: A set of .Values.ingress.rules is required
+
+  - it: Should catch error when "ingress.rules" e.g. tilde ~
+    set:
+      <<: *globallyRequiredValues
+      ingress.rules: ~
+    asserts:
+      - failedTemplate:
+          errorMessage: A set of .Values.ingress.rules is required
+
+  - it: Should catch error when ingress.rules is nil e.g. tilde ~
+    set:
+      ingress:
+        rules: ~
+    asserts:
+      - failedTemplate:
+          errorMessage: A set of .Values.ingress.rules is required
+
+  - it: Should catch error when ingress.rules is nil e.g. tilde ~ and specify local template
+    template: ingress-fail.yaml
+    set:
+      ingress:
+        rules: ~
+    asserts:
+      - failedTemplate:
+          errorMessage: A set of .Values.ingress.rules is required
+
+  - it: Should catch error when illegal yaml syntax is used ingress.rules is nil e.g. tilde ~
+    set:
+      ingress.rules: ~
+    asserts:
+      - failedTemplate:
+          errorMessage: A set of .Values.ingress.rules is required
+
+  - it: Should test paradox when defined as yaml supports it.
+    set:
+      ingress:
+        rules: abra-kadabra
+    asserts:
+      - isKind:
+          of: Ingress
+      - equal:
+          path: metadata.annotations.rules
+          value: abra-kadabra
+
+  - it: Should test paradox when expression is complex path.
+    set:
+      ingress.rules: abra-kadabra-v2
+    asserts:
+      - isKind:
+          of: Ingress
+      - equal:
+          path: metadata.annotations.rules
+          value: abra-kadabra-v2

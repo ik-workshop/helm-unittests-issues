@@ -1,13 +1,11 @@
 ---
 suite: "test paradox"
 templates:
-  - templates/should-fail.yaml
+  - templates/slack-fail.yaml
 tests:
   - it: requires a slackAlertChannel
     set:
       slackAlertChannel: ~
-      datadog:
-        monitors:
     asserts:
       - failedTemplate:
           errorMessage: A valid .Values.slackAlertChannel is required
