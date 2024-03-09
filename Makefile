@@ -8,10 +8,11 @@ LOCAL_UNIT_TEST := $(HOME)/source/self/go-workshop/helm-unittest/untt
 
 SUPPORTED := chart \
 	issue-268 \
-	issue-337 \
 	issue-275 \
 	issue-254 \
-	issue-183
+	issue-183 \
+	issue-227 \
+	issue-286
 
 FILTER_FOLDER := $(filter $(folder),$(SUPPORTED))
 
@@ -22,7 +23,7 @@ help:
 .PHONY: check-issue
 check-issue: # export folder=chart
 ifndef folder
-	$(error The folder variable is not set '$(SUPPORTED)'.)
+	$(error The 'export folder=' variable is not set '$(SUPPORTED)'.)
 endif
 ifeq ($(FILTER_FOLDER),)
 		$(error $(folder) is not supported. Supported: '$(SUPPORTED)'.)
@@ -45,6 +46,9 @@ validate: ## Validate files with pre-commit hooks.
 
 cleanup:## Cleanup outputs
 	@rm -rf output
+
+update-plugin: ## Update plugin
+	@helm plugin update unittest
 
 template: ## Template helm chart for local testing.
 	helm template chart $(folder) \

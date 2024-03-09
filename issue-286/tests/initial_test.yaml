@@ -1,0 +1,11 @@
+tests:
+  - it: selects the correct kind
+    templates:
+      - templates/deploy.yaml
+    documentSelector:
+      path: kind
+      value: Deployment
+    asserts:
+      - equal:
+          path: kind
+          value: Deployment
