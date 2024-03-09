@@ -77,6 +77,6 @@ unit-test-loop: check-issue ## Execute in the loop. 20 times
   done
 
 unit-test-local: check-issue ## Execute Unit tests with locally build
-	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --debug $(folder)
+	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --debugPlugin $(folder)
 
 test: unit-test-local ## Run all available tests
