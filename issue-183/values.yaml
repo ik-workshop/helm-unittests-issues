@@ -7,8 +7,6 @@ ingress:
     - host: "foo.com" # not under test here
 resources: {}
 
-ingress.rules: abra-kadabra
-
 slackAlertChannel: ~
 datadog:
   monitors:

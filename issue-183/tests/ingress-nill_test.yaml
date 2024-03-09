@@ -4,8 +4,7 @@ globallyRequiredValues: &globallyRequiredValues
   environment: foo
   codeRepo: https://github.com/myco/helm-charts
   ingress:
-    rules:
-      - host: "foo.com" # not under test here
+    rules: hello-world
   resources: {}
 
 suite: "test paradox"

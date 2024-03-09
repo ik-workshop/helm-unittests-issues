@@ -50,7 +50,6 @@ template: ## Template helm chart for local testing.
 	helm template chart $(folder) \
 		--output-dir output -n default \
 		-f $(folder)/values.yaml \
-		--set ingress.rules=abra-cadabra-v2 \
 		--debug
 
 lint: ## Lint helm chart.
@@ -64,7 +63,7 @@ unit-test-docker: check-issue ## Execute Unit tests via Container  -c "/bin/sh"
 
 # helm plugin install https://github.com/helm-unittest/helm-unittest.git
 unit-test-plugin: check-issue ## Execute Unit tests locally with plugin
-	@helm unittest -f 'tests/*.yaml' $(folder)
+	@helm unittest -f 'tests/*.yaml' --debug $(folder)
 
 unit-test-loop: check-issue ## Execute in the loop. 20 times
 	@number=1 ; while [[ $$number -le 30 ]] ; do \
@@ -74,6 +73,6 @@ unit-test-loop: check-issue ## Execute in the loop. 20 times
   done
 
 unit-test-local: check-issue ## Execute Unit tests with locally build
-	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' $(folder)
+	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --debug $(folder)
 
 test: unit-test-local ## Run all available tests
