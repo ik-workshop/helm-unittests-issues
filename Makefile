@@ -4,7 +4,7 @@
 
 # skopeo list-tags --no-creds docker://helmunittest/helm-unittest "3.13.3-0.4.1",
 DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.11.1-0.3.0
-LOCAL_UNIT_TEST := $(HOME)/source/self/go-workshop/helm-unittest/untt
+LOCAL_UNIT_TEST := $(HOME)/source/self/go-workshop/helm-unittest-tmp/untt
 
 SUPPORTED := chart \
 	issue-268 \
