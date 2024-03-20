@@ -3,6 +3,7 @@ templates:
   - templates/deploy.yaml
 tests:
   - it: selects the correct kind
+    template: templates/deploy.yaml
     documentSelector:
       path: kind
       value: Deployment
