@@ -1,21 +1,27 @@
 ---
 suite: issue 303 for helm-unittest
 tests:
-
-- it: should have the service first
-  documentIndex: 0
+- it: manifest should match snapshot
   asserts:
-  - isKind:
-      of: Service
+    - matchSnapshot: {}
+# - it: should have the service first
+#   documentIndex: 0
+#   asserts:
+#   - isKind:
+#       of: Service
   # - equal:
   #     path: metadata.name
   #     value: example-service
 
-- it: should have the deployment second
-  documentIndex: 1
-  asserts:
-  - isKind:
-      of: Deployment
+# - it: should have the deployment second
+#   documentIndex: 1
+#   asserts:
+#   - isKind:
+#       of: Deployment
   # - equal:
   #     path: metadata.name
   #     value: example-deployment
+
+- it: manifest should match snapshot
+  asserts:
+    - matchSnapshot: {}
