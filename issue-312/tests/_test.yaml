@@ -1,6 +1,6 @@
 ---
 templates:
-  - templates/deploy.yaml
+  - "*.yaml"
 tests:
   - it: selects the correct kind
     template: templates/deploy.yaml
