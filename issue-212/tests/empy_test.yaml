@@ -1,0 +1,15 @@
+suite: Test empty template
+templates:
+  - validation.yaml
+tests:
+  - it: should fail when No failed document
+    asserts:
+    - failedTemplate: {}
+    - failedTemplate:
+            errorMessage: "Please provide someRequiredValue"
+
+  - it: should not fail when value is provided
+    set:
+      someRequiredValue: "foobar"
+    asserts:
+    - notFailedTemplate: {}
