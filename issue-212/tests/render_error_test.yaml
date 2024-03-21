@@ -1,0 +1,11 @@
+suite: Test error rendering template
+templates:
+  - templates/foo-svc.yaml
+tests:
+  - it: template should be failing for configmap
+    asserts:
+      - equal:
+          path: metadata.name
+          value: foo-service
+    # asserts:
+    #   - failedTemplate: {}
