@@ -1,0 +1,21 @@
+should have autoscaling enabled with snapshot match:
+  1: |
+    apiVersion: keda.sh/v1alpha1
+    kind: ScaledObject
+    metadata:
+      name: foo-scaledobject
+    spec:
+      pollingInterval: 30
+      scaleTargetRef:
+        apiVersion: apps/v1
+        kind: Deployment
+        name: foo-deployment
+  2: |
+    apiVersion: keda.sh/v1alpha1
+    kind: TriggerAuthentication
+    metadata:
+      name: foo-trigger-auth
+    spec:
+      secretTargetRef:
+        key: foo-secret-key
+        name: foo-secret

@@ -1,0 +1,27 @@
+---
+tests:
+  # - it: should selects the correct kind when autoscaling enabled
+  #   set:
+  #     autoscaling:
+  #       enabled: true
+  #   asserts:
+  #     - containsDocument:
+  #         kind: ScaledObject
+  #         apiVersion: keda.sh/v1alpha1
+
+  - it: should not selects the correct kind when autoscaling disabled
+    set:
+      autoscaling:
+        enabled: false
+    asserts:
+      - containsDocument:
+          kind: ScaledObject
+          apiVersion: keda.sh/v1alpha1
+        not: true
+
+  - it: should have autoscaling enabled with snapshot match
+    set:
+      autoscaling:
+        enabled: true
+    asserts:
+      - matchSnapshot: {}
