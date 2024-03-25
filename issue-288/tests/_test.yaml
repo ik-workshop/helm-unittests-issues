@@ -1,0 +1,14 @@
+---
+templates:
+  - "pod.yaml"
+tests:
+  - it: should selects the correct kind and match snapshot
+    documentSelector:
+      path: kind
+      value: Pod
+    asserts:
+      - matchSnapshot: {}
+  - it: should validate path exists
+    asserts:
+      - exists:
+          path: spec.affinity.nodeAffinity
