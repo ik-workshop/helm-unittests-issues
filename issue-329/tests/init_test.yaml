@@ -19,3 +19,5 @@ tests:
             set -eu
 
             gpg --batch --import /raw/private.asc
+
+
