@@ -3,7 +3,7 @@
 .DEFAULT_GOAL := help
 
 # skopeo list-tags --no-creds docker://helmunittest/helm-unittest "3.13.3-0.4.1",
-DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.14.3-0.4.3
+DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.14.3-0.4.4
 LOCAL_UNIT_TEST := $(HOME)/source/self/go-workshop/helm-unittest/untt
 
 SUPPORTED := chart \
@@ -18,7 +18,8 @@ SUPPORTED := chart \
 	issue-294 \
 	issue-303 \
 	issue-312 \
-	issue-316
+	issue-316 \
+	issue-329
 
 FILTER_FOLDER := $(filter $(folder),$(SUPPORTED))
 

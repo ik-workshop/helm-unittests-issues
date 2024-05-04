@@ -1,0 +1,20 @@
+
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: foo-scaledobject
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    name: foo-deployment
+    apiVersion: apps/v1
+  pollingInterval: 30
+---
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: foo-trigger-auth
+spec:
+  secretTargetRef:
+    name: foo-secret
+    key: foo-secret-key

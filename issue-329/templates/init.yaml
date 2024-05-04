@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: gitea-init
+type: Opaque
+stringData:
+  configure_gpg_environment.sh: |-
+    #!/usr/bin/env bash
+    set -eu
+
+    gpg --batch --import /raw/private.asc
