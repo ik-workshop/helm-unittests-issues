@@ -3,18 +3,14 @@ release:
   name: forgejo-unittests
   namespace: testing
 templates:
-  - templates/init.yaml
-# values:
-#   - ./values/values.yaml
+  - init.yaml
 tests:
   - it: runs gpg in batch mode
     set:
-      signing.enabled: true
       signing.privateKey: |-
         -----BEGIN PGP PRIVATE KEY BLOCK-----
         {placeholder}
         -----END PGP PRIVATE KEY BLOCK-----
-    # template: templates/init.yaml
     asserts:
       - equal:
           path: stringData["configure_gpg_environment.sh"]
@@ -23,4 +19,3 @@ tests:
             set -eu
 
             gpg --batch --import /raw/private.asc
-
