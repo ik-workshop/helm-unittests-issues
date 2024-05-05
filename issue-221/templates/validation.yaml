@@ -1,0 +1,3 @@
+{{- if (empty .Values.someRequiredValue) }}
+{{- fail "Please provide someRequiredValue" }}
+{{- end }}

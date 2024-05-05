@@ -11,6 +11,7 @@ SUPPORTED := chart \
 	issue-275 \
 	issue-254 \
 	issue-212 \
+	issue-221 \
 	issue-183 \
 	issue-227 \
 	issue-286 \

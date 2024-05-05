@@ -1,0 +1,10 @@
+suite: Test failing template
+templates:
+  - templates/configMap.yaml
+tests:
+  - it: template should be failing for configmap
+    asserts:
+      - failedTemplate: {}
+      - failedTemplate:
+          errorMessage: "error calling include: template: no template \"non-existing-named-template\" associated with template \"gotpl\""
+
