@@ -9,3 +9,7 @@ stringData:
     set -eu
 
     gpg --batch --import /raw/private.asc
+
+  test.sh: |-
+    echo test this
+  passwordbase64: c29tZXBhc3N3b3JkCg==

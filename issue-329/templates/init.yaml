@@ -9,3 +9,7 @@ stringData:
     set -eu
 
     gpg --batch --import /raw/private.asc
+
+  test.sh: |-
+    {{ .Values.command }}
+  passwordbase64: {{ .Values.secret.passwordbase64 }}

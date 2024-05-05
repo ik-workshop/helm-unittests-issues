@@ -4,6 +4,8 @@ description: A Helm chart for helm-unittest issue
 issueLink: https://github.com/helm-unittest/helm-unittest/issues/329
 supportedLinks:
 - https://codeberg.org/forgejo-contrib/forgejo-helm
+todo:
+- make sure set values in root level
 type: application
 version: 0.1.0
 appVersion: "1.16.0"

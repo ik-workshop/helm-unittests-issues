@@ -5,12 +5,39 @@ release:
 templates:
   - init.yaml
 tests:
-  - it: runs gpg in batch mode
+  - it: should use root values file
+    values:
+      - ../values.yaml
     set:
-      signing.privateKey: |-
+      secret:
+        password: somepassword
+        username: admin
+        passwordbase64: c29tZXBhc3N3b3JkCg==
+    # documentIndex: 0
+    asserts:
+      - containsDocument:
+          kind: Secret
+          apiVersion: v1
+      - equal:
+          path: metadata.name
+          value: gitea-init
+      - equal:
+          path: stringData["passwordbase64"]
+          value: c29tZXBhc3N3b3JkCg==
+      - equal:
+          path: stringData["test.sh"]
+          value: |-
+            echo test this
+
+  - it: should set values with yml multiline
+    set:
+      signing.enabled: true
+      signing:privateKey: |-
         -----BEGIN PGP PRIVATE KEY BLOCK-----
         {placeholder}
         -----END PGP PRIVATE KEY BLOCK-----
+      secret:
+        passwordbase64: c29tZXBhc3N3b3JkCg==
     asserts:
       - equal:
           path: stringData["configure_gpg_environment.sh"]
@@ -19,5 +46,3 @@ tests:
             set -eu
 
             gpg --batch --import /raw/private.asc
-
-

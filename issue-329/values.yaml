@@ -1,2 +1,1 @@
-autoscaling:
-  enabled: false
+command: "echo test this"

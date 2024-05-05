@@ -1,0 +1,21 @@
+---
+suite: test deployment
+templates:
+  - templates/deployment.yaml
+tests:
+  - it: should pass all kinds of assertion
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[0].image
+          value: apache:latest
+---
+suite: test deployment
+templates:
+  - templates/deployment.yaml
+tests:
+  - it: should pass all kinds of assertion
+    documents: 0
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[0].image
+          value: apache:latest
