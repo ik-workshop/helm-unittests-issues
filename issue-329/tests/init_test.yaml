@@ -32,7 +32,7 @@ tests:
   - it: should set values with yml multiline
     set:
       signing.enabled: true
-      signing:privateKey: |-
+      signing.privateKey: |-
         -----BEGIN PGP PRIVATE KEY BLOCK-----
         {placeholder}
         -----END PGP PRIVATE KEY BLOCK-----

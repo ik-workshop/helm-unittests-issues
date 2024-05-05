@@ -1,5 +1,5 @@
 ---
-suite: test deployment
+suite: first suite test deployment
 templates:
   - templates/deployment.yaml
 tests:
@@ -9,7 +9,7 @@ tests:
           path: spec.template.spec.containers[0].image
           value: apache:latest
 ---
-suite: test deployment
+suite: second suite test deployment
 templates:
   - templates/deployment.yaml
 tests:
