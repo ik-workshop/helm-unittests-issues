@@ -10,8 +10,10 @@ tests:
     - failedTemplate:
         contains: "provide"
 
-  # - it: should not fail when value is provided
-  #   set:
-  #     someRequiredValue: "foobar"
-  #   asserts:
-  #   - notFailedTemplate: {}
+
+  - it: should not fail when value is provided
+    set:
+      someRequiredValue: "foobar"
+    asserts:
+    - notFailedTemplate:
+        contains: 'test'
