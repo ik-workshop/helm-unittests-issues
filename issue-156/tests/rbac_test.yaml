@@ -1,0 +1,20 @@
+---
+suite: issue 303 for helm-unittest
+tests:
+- it: should have the service first
+  documentIndex: 0
+  asserts:
+  - isKind:
+      of: ClusterRole
+  # - equal:
+  #     path: metadata.name
+  #     value: example-service
+
+# - it: should have the deployment second
+#   documentIndex: 1
+#   asserts:
+#   - isKind:
+#       of: Deployment
+  # - equal:
+  #     path: metadata.name
+  #     value: example-deployment

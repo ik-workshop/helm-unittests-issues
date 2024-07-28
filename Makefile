@@ -3,10 +3,11 @@
 .DEFAULT_GOAL := help
 
 # skopeo list-tags --no-creds docker://helmunittest/helm-unittest "3.13.3-0.4.1",
-DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.14.3-0.4.4
-LOCAL_UNIT_TEST := $(HOME)/source/self/go-workshop/helm-unittest/untt
+DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.15.3-0.5.2
+LOCAL_UNIT_TEST := $(HOME)/source/self/go-workshop/helm-unittest-tmp/untt
 
 SUPPORTED := chart \
+  issue-156 \
 	issue-268 \
 	issue-275 \
 	issue-254 \
@@ -84,7 +85,10 @@ unit-test-loop: check-issue ## Execute in the loop. 20 times
         ((number = number + 1)) ; \
   done
 
-unit-test-local: check-issue ## Execute Unit tests with locally build
+unit-test-local: check-issue ## Execute Unit tests with locally build (--debugPlugin)
 	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --debugPlugin $(folder)
+
+unit-test-current: ## Execute Unit tests with locally build (--debugPlugin)
+	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --coverage issue-156
 
 test: unit-test-local ## Run all available tests

@@ -1,0 +1,23 @@
+
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: prometheus-backend
+  labels:
+    release: prometheus-operator
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: default
+      service-type: backend
+  namespaceSelector:
+  matchNames:
+  - "default"
+  endpoints:
+  - port: http
+  path: '/actuator/prometheus'
+  interval: 
+  scrapeTimeout: 
+  targetLabels:
+  - app.kubernetes.io/name
+  timestamp: '2024-07-28T07:44:04.805Z'
