@@ -1,5 +1,5 @@
 ---
-suite: issue 303 for helm-unittest
+suite: issue 156 for helm-unittest
 tests:
 - it: should have the service first
   documentIndex: 0
