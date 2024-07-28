@@ -1,5 +1,7 @@
 ---
 suite: issue 156 for helm-unittest
+templates:
+- templates/rbac.yaml
 tests:
 - it: should have the service first
   documentIndex: 0
