@@ -1,0 +1,11 @@
+apiVersion: v2
+name: chart
+description: A Helm chart for helm-unittest issue
+issueLink: https://github.com/helm-unittest/helm-unittest/issues/400
+supportedLinks:
+- https://github.com/helm-unittest/helm-unittest/issues
+todo:
+- issue with length
+type: application
+version: 0.1.0
+appVersion: "1.16.0"

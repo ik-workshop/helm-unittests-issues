@@ -3,7 +3,7 @@
 .DEFAULT_GOAL := help
 
 # skopeo list-tags --no-creds docker://helmunittest/helm-unittest "3.13.3-0.4.1",
-DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.15.3-0.5.2
+DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.15.3-0.5.1
 LOCAL_UNIT_TEST := $(HOME)/source/self/go-workshop/helm-unittest-tmp/untt
 
 SUPPORTED := chart \
@@ -21,7 +21,8 @@ SUPPORTED := chart \
 	issue-303 \
 	issue-312 \
 	issue-316 \
-	issue-329
+	issue-329 \
+	issue-340
 
 FILTER_FOLDER := $(filter $(folder),$(SUPPORTED))
 
@@ -68,10 +69,10 @@ template: ## Template helm chart for local testing.
 lint: ## Lint helm chart.
 	helm lint chart --values chart/values.yaml --debug
 
-unit-test-docker: check-issue ## Execute Unit tests via Container  -c "/bin/sh"
+unit-test-docker: ## Execute Unit tests via Container  -c "/bin/sh"
 	$(info Running unit tests...)
 	@docker run \
-		-v $(shell pwd)/$(folder):/apps/\
+		-v $(shell pwd)/issue-400:/apps/\
 		-it --rm  $(DOCKER_HELM_UNITITEST_IMAGE) --debug -f tests/*.yaml  .
 
 # helm plugin install https://github.com/helm-unittest/helm-unittest.git
@@ -85,10 +86,11 @@ unit-test-loop: check-issue ## Execute in the loop. 20 times
         ((number = number + 1)) ; \
   done
 
-unit-test-local: check-issue ## Execute Unit tests with locally build (--debugPlugin)
-	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --debugPlugin $(folder)
+unit-test-local: ## Execute Unit tests with locally build (--debugPlugin)
+	$(info Running unit tests for issue-400...)
+	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --debugPlugin issue-400
 
 unit-test-current: ## Execute Unit tests with locally build (--debugPlugin)
-	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --coverage issue-156
+	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --coverage issue-400
 
 test: unit-test-local ## Run all available tests
