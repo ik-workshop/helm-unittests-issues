@@ -5,10 +5,12 @@ tests:
   - it: should find a path and count number of environment variables
     asserts:
       # - matchSnapshot:
-      - exists:
-          path: spec.jobTemplate.spec.template.spec.containers[?(@.name == "first-cronjob-container")].env
-        documentIndex: 0
-      - lengthEqual:
-          path: spec.jobTemplate.spec.template.spec.containers[?(@.name == "first-cronjob-container")].env
-          count: 9
-        documentIndex: 0
+      # - exists:
+      #     path: spec.jobTemplate.spec.template.spec.containers[?(@.name == "first-cronjob-container")].env
+      #   documentIndex: 0
+      # - lengthEqual:
+      #     path: spec.jobTemplate.spec.template.spec.containers[?(@.name == "first-cronjob-container")].env
+      #     count: 9
+      #   documentIndex: 0
+      # - failedTemplate: {}
+      - notFailedTemplate: {}

@@ -76,8 +76,8 @@ unit-test-docker: ## Execute Unit tests via Container  -c "/bin/sh"
 		-it --rm  $(DOCKER_HELM_UNITITEST_IMAGE) --debug -f tests/*.yaml  .
 
 # helm plugin install https://github.com/helm-unittest/helm-unittest.git
-unit-test-plugin: check-issue ## Execute Unit tests locally with plugin
-	@helm unittest -f 'tests/*.yaml' --debug $(folder)
+unit-test-plugin: # Execute Unit tests locally with plugin
+	@helm unittest -f 'tests/*.yaml' --debug issue-400x
 
 unit-test-loop: check-issue ## Execute in the loop. 20 times
 	@number=1 ; while [[ $$number -le 30 ]] ; do \
@@ -88,9 +88,9 @@ unit-test-loop: check-issue ## Execute in the loop. 20 times
 
 unit-test-local: ## Execute Unit tests with locally build (--debugPlugin)
 	$(info Running unit tests for issue-400...)
-	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --debugPlugin issue-400
+	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --debugPlugin issue-400x
 
 unit-test-current: ## Execute Unit tests with locally build (--debugPlugin)
-	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --coverage issue-400
+	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --coverage issue-400x
 
 test: unit-test-local ## Run all available tests
