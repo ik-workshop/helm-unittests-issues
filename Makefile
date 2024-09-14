@@ -22,7 +22,8 @@ SUPPORTED := chart \
 	issue-312 \
 	issue-316 \
 	issue-329 \
-	issue-340
+	issue-340 \
+	issue-412
 
 FILTER_FOLDER := $(filter $(folder),$(SUPPORTED))
 
@@ -87,10 +88,10 @@ unit-test-loop: check-issue ## Execute in the loop. 20 times
   done
 
 unit-test-local: ## Execute Unit tests with locally build (--debugPlugin)
-	$(info Running unit tests for issue-400...)
-	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --debugPlugin issue-400x
+	$(info Running unit tests for issue-412...)
+	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --debugPlugin issue-412
 
 unit-test-current: ## Execute Unit tests with locally build (--debugPlugin)
-	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --coverage issue-400x
+	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --coverage issue-412
 
 test: unit-test-local ## Run all available tests

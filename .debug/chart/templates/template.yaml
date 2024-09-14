@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-configmap
+  labels:
+    app: test-configmap
+    appVersion: "2.0.0"
+    chart: chart-0.2.0
+    release: my-release-name
+    heritage: Helm
+spec:
+  version: 0.2.0
+  appVersion: 2.0.0
+data:
+  my.value: "test"

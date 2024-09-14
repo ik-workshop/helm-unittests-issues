@@ -1,0 +1,21 @@
+suite: Override values in tests
+templates:
+  - template.yaml
+release:
+  name: my-release-name
+  namespace: my-namespace
+chart:
+  appVersion: 1.0.0
+  version: 0.0.3
+tests:
+  - it: override chart version and appVersion
+    chart:
+      version: 0.2.0
+      appVersion: 2.0.0
+    asserts:
+      - equal:
+          path: spec.version
+          value: 0.2.0
+      - equal:
+          path: spec.appVersion
+          value: 2.0.0
