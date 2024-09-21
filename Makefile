@@ -96,7 +96,8 @@ template: ## Helm template to validate
 	$(info Running helm template for $(ISSUE)...)
 	@helm template namespaces $(ISSUE) \
 		--output-dir .output \
-	--values environments/$(ENV)/$(REGION)/$(CLUSTER)/namespaces.yaml
+		--debug \
+		--values $(ISSUE)/values.yaml
 
 unit-test-local: ## Execute Unit tests with locally build (--debugPlugin)
 	$(info Running unit tests for $(ISSUE)...)

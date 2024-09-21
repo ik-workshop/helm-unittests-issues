@@ -1,3 +1,14 @@
 command: "echo test this"
 
+global:
+  rbac:
+    create: true
+  leaderElection:
+    namespace: default
+
 disableAutoApproval: true
+
+serviceAccount:
+  create: true
+
+
