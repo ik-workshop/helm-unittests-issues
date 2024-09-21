@@ -87,11 +87,13 @@ unit-test-loop: check-issue ## Execute in the loop. 20 times
         ((number = number + 1)) ; \
   done
 
+ISSUE := issue-403
+
 unit-test-local: ## Execute Unit tests with locally build (--debugPlugin)
-	$(info Running unit tests for issue-412...)
-	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --debugPlugin issue-412
+	$(info Running unit tests for $(ISSUE)...)
+	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --debugPlugin $(ISSUE)
 
 unit-test-current: ## Execute Unit tests with locally build (--debugPlugin)
-	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --coverage issue-412
+	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --coverage $(ISSUE)
 
 test: unit-test-local ## Run all available tests

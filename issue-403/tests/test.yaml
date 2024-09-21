@@ -1,0 +1,11 @@
+suite: Override values in tests
+templates:
+  - template.yaml
+release:
+  name: my-release-name
+  namespace: my-namespace
+tests:
+  - it: test me
+    asserts:
+      - hasDocuments:
+          count: 1

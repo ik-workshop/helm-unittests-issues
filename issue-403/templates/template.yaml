@@ -10,7 +10,11 @@ rules:
     resources: ["challenges", "orders"]
     verbs: ["get", "list", "watch"]
 
----# Permission to approve CertificateRequests referencing cert-manager.io Issuers and ClusterIssuers
+---
+
+{{- if not .Values.disableAutoApproval -}}
+
+# Permission to approve CertificateRequests referencing cert-manager.io Issuers and ClusterIssuers
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -18,7 +22,11 @@ metadata:
 rules:
   - apiGroups: ["cert-manager.io"]
     resources: ["signers"]
-    verbs: ["approve"]---
+    verbs: ["approve"]
+
+{{- end -}}
+
+---
 
 # Permission to:
 # - Update and sign CertificatSigningeRequests referencing cert-manager.io Issuers and ClusterIssuers
