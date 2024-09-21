@@ -92,6 +92,12 @@ unit-test-loop: check-issue ## Execute in the loop. 20 times
         ((number = number + 1)) ; \
   done
 
+template: ## Helm template to validate
+	$(info Running helm template for $(ISSUE)...)
+	@helm template namespaces $(ISSUE) \
+		--output-dir .output \
+	--values environments/$(ENV)/$(REGION)/$(CLUSTER)/namespaces.yaml
+
 unit-test-local: ## Execute Unit tests with locally build (--debugPlugin)
 	$(info Running unit tests for $(ISSUE)...)
 	@$(LOCAL_UNIT_TEST) --help -f 'tests/*.yaml' --debugPlugin $(ISSUE)

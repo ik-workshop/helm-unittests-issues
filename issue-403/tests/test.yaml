@@ -9,5 +9,6 @@ set:
 tests:
   - it: test me
     asserts:
+      - matchSnapshot: {}
       - hasDocuments:
           count: 1
