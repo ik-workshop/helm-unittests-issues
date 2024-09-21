@@ -1,6 +1,6 @@
 suite: Override values in tests
 templates:
-  - template.yaml
+  - rbac-partial.yaml
 release:
   name: my-release-name
   namespace: my-namespace
