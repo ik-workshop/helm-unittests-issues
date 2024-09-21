@@ -1,0 +1,11 @@
+apiVersion: v2
+name: chart
+description: capabilities.apiVersions cannot be unset
+issueLink: https://github.com/helm-unittest/helm-unittest/issues/413
+supportedLinks:
+- https://github.com/helm-unittest/helm-unittest/issues/413
+todo:
+- issue with capabilities.apiVersions
+type: application
+version: 0.99.0
+appVersion: "1.16.0"
