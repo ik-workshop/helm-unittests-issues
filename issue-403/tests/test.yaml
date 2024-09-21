@@ -4,6 +4,8 @@ templates:
 release:
   name: my-release-name
   namespace: my-namespace
+set:
+  disableAutoApproval: true
 tests:
   - it: test me
     asserts:

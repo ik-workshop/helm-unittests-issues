@@ -23,6 +23,7 @@ SUPPORTED := chart \
 	issue-316 \
 	issue-329 \
 	issue-340 \
+	issue-403 \
 	issue-412
 
 FILTER_FOLDER := $(filter $(folder),$(SUPPORTED))
@@ -76,9 +77,13 @@ unit-test-docker: ## Execute Unit tests via Container  -c "/bin/sh"
 		-v $(shell pwd)/issue-400:/apps/\
 		-it --rm  $(DOCKER_HELM_UNITITEST_IMAGE) --debug -f tests/*.yaml  .
 
+ISSUE := issue-403
+
 # helm plugin install https://github.com/helm-unittest/helm-unittest.git
+# helm plugin update unittest
 unit-test-plugin: # Execute Unit tests locally with plugin
-	@helm unittest -f 'tests/*.yaml' --debug issue-400x
+	$(info Running unit tests (upstream) for $(ISSUE)...)
+	@helm unittest -f 'tests/*.yaml' --debugPlugin $(ISSUE)
 
 unit-test-loop: check-issue ## Execute in the loop. 20 times
 	@number=1 ; while [[ $$number -le 30 ]] ; do \
@@ -87,13 +92,11 @@ unit-test-loop: check-issue ## Execute in the loop. 20 times
         ((number = number + 1)) ; \
   done
 
-ISSUE := issue-403
-
 unit-test-local: ## Execute Unit tests with locally build (--debugPlugin)
 	$(info Running unit tests for $(ISSUE)...)
-	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --debugPlugin $(ISSUE)
+	@$(LOCAL_UNIT_TEST) --help -f 'tests/*.yaml' --debugPlugin $(ISSUE)
 
 unit-test-current: ## Execute Unit tests with locally build (--debugPlugin)
 	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --coverage $(ISSUE)
 
-test: unit-test-local ## Run all available tests
+test: unit-test-plugin ## Run all available tests
