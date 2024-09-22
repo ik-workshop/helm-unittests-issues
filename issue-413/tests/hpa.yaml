@@ -14,3 +14,21 @@ tests:
           count: 1
       - isAPIVersion:
           of: autoscaling/v2
+
+  - it: should not override apiVersion when not defined at test level
+    capabilities:
+      minorVersion: 20
+    set:
+      hpa:
+        enabled: true
+    asserts:
+      - hasDocuments:
+          count: 1
+      - isAPIVersion:
+          of: autoscaling/v2
+      # - matchSnapshot: {}
+      - equal:
+          path: metadata.labels["kubeVersion.minor"]
+          value: "20"
+      - isAPIVersion:
+          of: autoscaling/v2

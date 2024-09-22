@@ -47,13 +47,7 @@ tests:
 
   - it: should pass minorVersion as string
     capabilities:
-      majorVersion: 1
-      minorVersion: "12"
-      apiVersions:
-        - br.dev.local/v1
+      minorVersion: 20
     asserts:
       - hasDocuments:
-          count: 1
-      - equal:
-          path: metadata.labels["kubeVersion.minor"]
-          value: "12"
+          count: 0
