@@ -45,13 +45,6 @@ tests:
       - hasDocuments:
           count: 0
 
-  - it: should pass minorVersion as string
-    capabilities:
-      minorVersion: 20
-    asserts:
-      - hasDocuments:
-          count: 0
-
   - it: should not override minorVersion
     capabilities:
       majorVersion: 1

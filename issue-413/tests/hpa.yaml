@@ -1,4 +1,4 @@
-suite: MyTemplate test
+suite: HPA test
 templates:
   - hpa.yaml
 capabilities:
@@ -15,7 +15,7 @@ tests:
       - isAPIVersion:
           of: autoscaling/v2
 
-  - it: should not override apiVersion when not defined at test level
+  - it: should not override apiVersion and set minorVersion
     capabilities:
       minorVersion: 20
     set:
