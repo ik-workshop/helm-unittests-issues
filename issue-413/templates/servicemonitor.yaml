@@ -4,6 +4,8 @@ kind: ServiceMonitor
 metadata:
   name: prometheus
   namespace: prometheus
+  labels:
+    kubeVersion.minor: {{ .Capabilities.KubeVersion.Minor | quote }}
 spec:
   endpoints:
   - interval: 30s
