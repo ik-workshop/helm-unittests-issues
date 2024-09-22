@@ -1,0 +1,16 @@
+suite: MyTemplate test
+templates:
+  - hpa.yaml
+capabilities:
+  apiVersions:
+    - autoscaling/v2
+tests:
+  - it: should not override apiVersion when not defined at test level
+    set:
+      hpa:
+        enabled: true
+    asserts:
+      - hasDocuments:
+          count: 1
+      - isAPIVersion:
+          of: autoscaling/v2

@@ -6,6 +6,8 @@
 DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.15.3-0.5.1
 LOCAL_UNIT_TEST := $(HOME)/source/self/go-workshop/helm-unittest-tmp/untt
 
+ISSUE := issue-413
+
 SUPPORTED := chart \
   issue-156 \
 	issue-268 \
@@ -77,8 +79,6 @@ unit-test-docker: ## Execute Unit tests via Container  -c "/bin/sh"
 		-v $(shell pwd)/issue-400:/apps/\
 		-it --rm  $(DOCKER_HELM_UNITITEST_IMAGE) --debug -f tests/*.yaml  .
 
-ISSUE := issue-413
-
 # helm plugin install https://github.com/helm-unittest/helm-unittest.git
 # helm plugin update unittest
 unit-test-plugin: # Execute Unit tests locally with plugin
@@ -101,9 +101,9 @@ template: ## Helm template to validate
 
 unit-test-local: ## Execute Unit tests with locally build (--debugPlugin)
 	$(info Running unit tests for $(ISSUE)...)
-	@$(LOCAL_UNIT_TEST) --help -f 'tests/*.yaml' --debugPlugin $(ISSUE)
+	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --debugPlugin $(ISSUE)
 
 unit-test-current: ## Execute Unit tests with locally build (--debugPlugin)
 	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --coverage $(ISSUE)
 
-test: unit-test-plugin ## Run all available tests
+test: unit-test-local ## Run all available tests
