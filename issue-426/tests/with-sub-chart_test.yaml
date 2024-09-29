@@ -1,0 +1,8 @@
+suite: Parent test
+templates:
+  - charts/with-sub-chart/templates/child-deployment.yaml
+tests:
+  - it: should render deployment
+    asserts:
+      - hasDocuments:
+          count: 1

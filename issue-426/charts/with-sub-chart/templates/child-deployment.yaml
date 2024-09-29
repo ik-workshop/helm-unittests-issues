@@ -1,0 +1,8 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-deployment
+  annotations:
+    checksum/configmap: {{ include (print $.Template.BasePath "/child-configmap.yaml") . | sha256sum }}
+spec:
+  replicas: 3

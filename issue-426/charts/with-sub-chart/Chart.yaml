@@ -1,5 +1,5 @@
 apiVersion: v2
-name: chart
+name: with-sub-chart
 description: capabilities.apiVersions cannot be unset
 issueLink: https://github.com/helm-unittest/helm-unittest/issues/426
 supportedLinks:
@@ -8,10 +8,5 @@ supportedLinks:
 todo:
 - issue with subhcarts
 type: application
-version: 0.1.0
-appVersion: "1.0.1"
-# https://helm.sh/docs/helm/helm_dependency/
-dependencies:
-  - name: with-sub-chart
-    version: 1.2.1
-    # repository: file://charts/sub-chart
+version: 1.2.1
+appVersion: "1.16.0"
