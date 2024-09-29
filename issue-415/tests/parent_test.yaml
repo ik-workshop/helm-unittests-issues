@@ -1,0 +1,20 @@
+suite: Parent test
+templates:
+  -parent-deployment.yaml
+tests:
+  - it: should render deployment
+    asserts:
+      - hasDocuments:
+          count: 1
+
+  # - it: with monitoring, ServiceMonitor is created
+  #   capabilities:
+  #     minorVersion: 20
+  #   asserts:
+  #     - hasDocuments:
+  #         count: 1
+  #     - isAPIVersion:
+  #         of: monitoring.coreos.com/v1
+  #     - equal:
+  #         path: metadata.labels["kubeVersion.minor"]
+  #         value: "20"
