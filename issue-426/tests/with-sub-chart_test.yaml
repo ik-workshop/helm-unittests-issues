@@ -1,8 +1,16 @@
-suite: Parent test
+suite: Subchart test
 templates:
+  - charts/with-sub-chart/templates/child-configmap.yaml
   - charts/with-sub-chart/templates/child-deployment.yaml
 tests:
   - it: should render deployment
+    template: charts/with-sub-chart/templates/child-deployment.yaml
+    documentIndex: 0
     asserts:
+      - isKind:
+            of: Deployment
       - hasDocuments:
           count: 1
+      - equal:
+          path: metadata.annotations["checksum/configmap"]
+          value: "b8a30e9312cc4971949c1a55fa21f8d1d700a8267b11dc84ee98998471526d2f"

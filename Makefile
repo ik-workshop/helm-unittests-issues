@@ -93,7 +93,7 @@ template: ## Helm template to validate
 # helm plugin update unittest
 unit-test-plugin: ## Execute Unit tests locally with plugin
 	$(info Running unit tests (upstream) for $(ISSUE)...)
-	@helm unittest -f 'tests/*.yaml' $(ISSUE)
+	@helm unittest -f 'tests/*.yaml' --debugPlugin $(ISSUE)
 
 unit-test-local: ## Execute Unit tests with locally build (--debugPlugin)
 	$(info Running unit tests for $(ISSUE)...)

@@ -1,6 +1,7 @@
 suite: Parent test
 templates:
   - parent-deployment.yaml
+  - parent-configmap.yaml
 tests:
   - it: should render deployment
     asserts:
