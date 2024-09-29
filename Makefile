@@ -6,7 +6,7 @@
 DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.15.3-0.5.1
 LOCAL_UNIT_TEST := $(HOME)/source/self/go-workshop/helm-unittest-tmp/untt
 
-ISSUE := issue-415
+ISSUE := issue-426
 
 SUPPORTED := chart \
   issue-156 \
@@ -26,7 +26,9 @@ SUPPORTED := chart \
 	issue-329 \
 	issue-340 \
 	issue-403 \
-	issue-412
+	issue-412 \
+	issue-413 \
+	issue-426
 
 FILTER_FOLDER := $(filter $(folder),$(SUPPORTED))
 
@@ -95,7 +97,7 @@ template: ## Helm template to validate
 
 # helm plugin install https://github.com/helm-unittest/helm-unittest.git
 # helm plugin update unittest
-unit-test-plugin: # Execute Unit tests locally with plugin
+unit-test-plugin: ## Execute Unit tests locally with plugin
 	$(info Running unit tests (upstream) for $(ISSUE)...)
 	@helm unittest -f 'tests/*.yaml' $(ISSUE)
 
