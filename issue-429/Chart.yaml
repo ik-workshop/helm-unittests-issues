@@ -15,3 +15,7 @@ dependencies:
   - name: with-sub-chart
     version: 1.2.1
     # repository: file://charts/sub-chart
+  - name: postgresql
+    repository: https://kubernetes-charts.storage.googleapis.com
+    version: 0.8.3
+    condition: postgresql.enabled
