@@ -6,7 +6,7 @@
 DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.15.3-0.5.1
 LOCAL_UNIT_TEST := $(HOME)/source/self/go-workshop/helm-unittest-tmp/untt
 
-ISSUE := issue-426
+ISSUE := issue-429
 
 SUPPORTED := chart \
   issue-156 \
@@ -28,7 +28,8 @@ SUPPORTED := chart \
 	issue-403 \
 	issue-412 \
 	issue-413 \
-	issue-426
+	issue-426 \
+	issue-429
 
 FILTER_FOLDER := $(filter $(folder),$(SUPPORTED))
 
@@ -97,7 +98,7 @@ unit-test-plugin: ## Execute Unit tests locally with plugin
 
 unit-test-local: ## Execute Unit tests with locally build (--debugPlugin)
 	$(info Running unit tests for $(ISSUE)...)
-	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --debugPlugin $(ISSUE)
+	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' $(ISSUE)
 
 unit-test-current: ## Execute Unit tests with locally build (--debugPlugin)
 	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --coverage $(ISSUE)
