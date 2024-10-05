@@ -91,6 +91,9 @@ template: ## Helm template to validate
 		--debug \
 		--values $(ISSUE)/values.yaml
 
+deps: ## Helm dependencies
+	@helm dependency build $(ISSUE)
+
 # helm plugin install https://github.com/helm-unittest/helm-unittest.git
 # helm plugin update unittest
 unit-test-plugin: ## Execute Unit tests locally with plugin

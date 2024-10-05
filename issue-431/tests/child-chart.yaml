@@ -1,0 +1,16 @@
+suite: test notes.txt
+templates:
+  - charts/hivemq-platform/templates/NOTES.txt
+release:
+  name: test-notes
+  namespace: apps-notes
+tests:
+  - it: should pass all kinds of assertion
+    asserts:
+      - equalRaw:
+          value: |
+            -----
+            HiveMQ Platform release "test-notes" installed in namespace "apps-notes"
+
+            Documentation can be found here: https://docs.hivemq.com/hivemq-platform-operator/index.html
+            -----
