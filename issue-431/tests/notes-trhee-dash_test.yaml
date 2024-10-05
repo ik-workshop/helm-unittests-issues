@@ -1,6 +1,6 @@
 suite: test notes.txt
 templates:
-  - templates/NOTES.txt
+  - templates/notes-three-dashes.txt
 release:
   name: test-notes
   namespace: apps-notes
@@ -9,8 +9,10 @@ tests:
     asserts:
       - equalRaw:
           value: |
-            --------
+            ---
+            
             Platform release "test-notes" installed in namespace "apps-notes"
 
-            Documentation can be found here:
-            --------
+            ---
+
+            Test this
