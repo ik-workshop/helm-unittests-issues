@@ -6,7 +6,7 @@
 DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.15.3-0.5.1
 LOCAL_UNIT_TEST := $(HOME)/source/self/go-workshop/helm-unittest-tmp/untt
 
-ISSUE := issue-431
+ISSUE := issue-300
 
 SUPPORTED := chart \
   issue-156 \
@@ -20,6 +20,7 @@ SUPPORTED := chart \
 	issue-286 \
 	issue-288 \
 	issue-294 \
+	issue-300 \
 	issue-303 \
 	issue-312 \
 	issue-316 \

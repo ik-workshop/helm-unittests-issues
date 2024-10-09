@@ -1,0 +1,21 @@
+suite: test postgresql deployment
+templates:
+  - charts/postgresql/templates/deployment.yaml
+chart:
+  version: 3.6.1
+tests:
+  - it: should pass all kinds of assertion for subchart
+    asserts:
+      - isKind:
+          of: Deployment
+      - isAPIVersion:
+          of: extensions/v1beta1
+      - hasDocuments:
+          count: 1
+      - matchSnapshot: {}
+
+  - it: should override subchart version when installed as a dependency
+    asserts:
+      - equal:
+          path: metadata.labels.chart
+          value: postgresql-3.6.1

@@ -1,0 +1,13 @@
+suite: Subchart test
+templates:
+  - charts/with-sub-chart/templates/service.yaml
+tests:
+  - it: should change chart version
+    asserts:
+      - equal:
+          path: metadata.labels.version
+          value: "0.1.1"
+      - equal:
+          path: metadata.labels.appversion
+          value: "1.1.1"
+
