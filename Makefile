@@ -109,3 +109,12 @@ unit-test-current: ## Execute Unit tests with locally build (--debugPlugin)
 	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --coverage $(ISSUE)
 
 test: unit-test-local ## Run all available tests
+
+test-chart:
+	@helm unittest -f tests/parent_test.yaml $(ISSUE)
+
+test-child-chart:
+	@helm unittest -f tests/with-sub-chart_test.yaml $(ISSUE)
+
+test-child-tests:
+	@helm unittest -f tests/postgresql_deployment_test.yaml $(ISSUE)
