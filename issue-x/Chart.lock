@@ -1,0 +1,6 @@
+dependencies:
+- name: hivemq-platform
+  repository: https://hivemq.github.io/helm-charts
+  version: 0.2.24
+digest: sha256:d19cd9890bfd5bc5236616d3790bc430f031991171145f0f012865cf61e5049b
+generated: "2024-10-05T12:07:52.13062+01:00"

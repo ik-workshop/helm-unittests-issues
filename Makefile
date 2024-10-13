@@ -3,10 +3,10 @@
 .DEFAULT_GOAL := help
 
 # skopeo list-tags --no-creds docker://helmunittest/helm-unittest "3.13.3-0.4.1",
-DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.15.3-0.5.1
+DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.16.1-0.6.3
 LOCAL_UNIT_TEST := $(HOME)/source/self/go-workshop/helm-unittest-tmp/untt
 
-ISSUE := issue-300
+ISSUE := issue-x
 
 SUPPORTED := chart \
   issue-156 \
@@ -31,7 +31,8 @@ SUPPORTED := chart \
 	issue-413 \
 	issue-426 \
 	issue-429 \
-	issue-431
+	issue-431 \
+	issue-x
 
 FILTER_FOLDER := $(filter $(folder),$(SUPPORTED))
 
@@ -111,10 +112,10 @@ unit-test-current: ## Execute Unit tests with locally build (--debugPlugin)
 test: unit-test-local ## Run all available tests
 
 test-chart:
-	@helm unittest -f tests/parent_test.yaml $(ISSUE)
+	@$(LOCAL_UNIT_TEST) -f tests/parent_test.yaml $(ISSUE)
 
 test-child-chart:
-	@helm unittest -f tests/with-sub-chart_test.yaml $(ISSUE)
+	@$(LOCAL_UNIT_TEST) -f tests/with-sub-chart_test.yaml $(ISSUE)
 
 test-child-tests:
-	@helm unittest -f tests/postgresql_deployment_test.yaml $(ISSUE)
+	@$(LOCAL_UNIT_TEST) -f tests/postgresql_deployment_test.yaml $(ISSUE)

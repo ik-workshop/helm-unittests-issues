@@ -1,0 +1,12 @@
+apiVersion: v2
+name: chart
+description: capabilities.apiVersions cannot be unset
+issueLink: https://github.com/helm-unittest/helm-unittest/issues/431
+supportedLinks:
+- https://github.com/helm-unittest/helm-unittest/issues/x
+- https://gitlab.com/gitlab-org/charts/gitlab-runner
+todo:
+- issue with subhcarts
+type: application
+version: 0.1.0
+appVersion: "1.0.1"

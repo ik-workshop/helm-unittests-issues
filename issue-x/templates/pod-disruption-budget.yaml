@@ -1,0 +1,28 @@
+# https://kubernetes.io/docs/tasks/run-application/configure-pdb/
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  labels:
+    app: {{ template "gitlab-runner.fullname" . }}
+    chart: {{ template "gitlab-runner.chart" . }}
+    app.kubernetes.io/managed-by: Helm
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+  name: {{ template "gitlab-runner.fullname" . }}
+  namespace: {{ .Release.Namespace | quote }}
+spec:
+  {{- if not .Values.managerPdb -}}
+  {{ fail "Error: At least one managerPdb.minAvailable or managerPdb.maxUnavailable must be set." }}
+  {{- end -}}
+  {{- $hasMinAvailable := hasKey .Values.managerPdb "minAvailable" -}}
+  {{- $hasMaxUnavailable := hasKey .Values.managerPdb "maxUnavailable" -}}
+  {{- if and $hasMinAvailable $hasMaxUnavailable }}
+  {{ fail "Error: One of managerPdb.minAvailable or managerPdb.maxUnavailable must be set." }}
+  {{- else if $hasMinAvailable }}
+  minAvailable: {{ .Values.managerPdb.minAvailable | quote }}
+  {{- else if $hasMaxUnavailable }}
+  maxUnavailable: {{ .Values.managerPdb.maxUnavailable | quote }}
+  {{- end }}
+  selector:
+    matchLabels:
+      app: {{ template "gitlab-runner.fullname" . }}

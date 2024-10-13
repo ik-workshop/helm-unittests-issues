@@ -1,0 +1,44 @@
+suite: Test PodDisruptionBudget
+release:
+  name: gitlab-runner
+  namespace: gitlab-ns
+templates:
+  - pod-disruption-budget.yaml
+tests:
+  - it: should be rendered correctly with default config (set to minAvailable)
+    set:
+      managerPdb:
+        minAvailable: "50%"
+    asserts:
+      - hasDocuments:
+          count: 1
+      - isKind:
+          of: PodDisruptionBudget
+      - isSubset:
+          path: spec
+          content:
+            minAvailable: "50%"
+            selector:
+              matchLabels:
+                app: gitlab-runner
+      - equal:
+          path: metadata.name
+          value: gitlab-runner
+      - equal:
+          path: metadata.namespace
+          value: gitlab-ns
+
+  # test temporarily disabled as it does not behaves as expected. TODO be reported to upstream unittest project
+  #- it: should contain the correct spec when using maxUnavailable config
+  #  set:
+  #    managerPdb:
+  #      maxUnavailable: "90%"
+  #  asserts:
+  #    - isSubset:
+  #        path: spec
+  #        content:
+  #          maxUnavailable: "90%"
+  #          selector:
+  #            matchLabels:
+  #              app: gitlab-runner
+
