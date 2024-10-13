@@ -1,1 +1,2 @@
-command: "echo test this"
+managerPdb:
+  minAvailable: "50%"
