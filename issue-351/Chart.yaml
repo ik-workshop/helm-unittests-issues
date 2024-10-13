@@ -7,6 +7,7 @@ supportedLinks:
 - https://gitlab.com/gitlab-org/charts/gitlab-runner
 - https://github.com/aws/karpenter-provider-aws/tree/main/charts/karpenter-crd
 - https://github.com/aws/karpenter-provider-aws/tree/main/charts/karpenter-crd/templates
+- https://github.com/aws/karpenter-provider-aws/blob/main/charts/karpenter-crd/templates/karpenter.sh_nodeclaims.yaml
 todo:
 - issue with subhcarts
 type: application

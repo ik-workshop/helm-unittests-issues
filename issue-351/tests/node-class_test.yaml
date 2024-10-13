@@ -2,9 +2,17 @@ suite: Test isValidSchema for NodeClass
 templates:
   - node-class.yaml
 tests:
-  - it: should not through an error
+  - it: should validate schema
     asserts:
       - hasDocuments:
           count: 1
       - isKind:
           of: EC2NodeClass
+      - assertionNotSupported:
+          # schemas:
+          #   - https://github.com/aws/karpenter-provider-aws/blob/main/charts/karpenter-crd/templates/karpenter.sh_nodepools.yaml
+          #   - https://github.com/aws/karpenter-provider-aws/blob/v1.0.6/charts/karpenter-crd/templates/karpenter.sh_nodepools.yaml
+      # - isValidSchema:
+      #     schemas:
+      #       - https://github.com/aws/karpenter-provider-aws/blob/main/charts/karpenter-crd/templates/karpenter.sh_nodepools.yaml
+      #       - https://github.com/aws/karpenter-provider-aws/blob/v1.0.6/charts/karpenter-crd/templates/karpenter.sh_nodepools.yaml

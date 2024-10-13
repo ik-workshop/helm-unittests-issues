@@ -105,7 +105,7 @@ unit-test-plugin: ## Execute Unit tests locally with plugin --debugPlugin
 
 unit-test-local: ## Execute Unit tests with locally build (--debugPlugin)
 	$(info Running unit tests for $(ISSUE)...)
-	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' $(ISSUE)
+	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --debugPlugin  $(ISSUE)
 
 unit-test-current: ## Execute Unit tests with locally build (--debugPlugin)
 	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --coverage $(ISSUE)
