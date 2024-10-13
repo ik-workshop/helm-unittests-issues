@@ -1,0 +1,14 @@
+apiVersion: v2
+name: chart
+description: capabilities.apiVersions cannot be unset
+issueLink: https://github.com/helm-unittest/helm-unittest/issues/351
+supportedLinks:
+- https://github.com/helm-unittest/helm-unittest/issues/351
+- https://gitlab.com/gitlab-org/charts/gitlab-runner
+- https://github.com/aws/karpenter-provider-aws/tree/main/charts/karpenter-crd
+- https://github.com/aws/karpenter-provider-aws/tree/main/charts/karpenter-crd/templates
+todo:
+- issue with subhcarts
+type: application
+version: 0.1.0
+appVersion: "1.0.1"

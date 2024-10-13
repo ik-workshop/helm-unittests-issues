@@ -1,0 +1,10 @@
+suite: Test PodDisruptionBudget
+templates:
+  - 100-cpu-limit.yaml
+tests:
+  - it: should be rendered correctly with default config (set to minAvailable)
+    asserts:
+      - hasDocuments:
+          count: 2
+      # - isKind:
+      #     of: EC2NodeClass

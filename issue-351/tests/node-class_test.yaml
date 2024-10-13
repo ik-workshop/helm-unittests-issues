@@ -1,0 +1,10 @@
+suite: Test isValidSchema for NodeClass
+templates:
+  - node-class.yaml
+tests:
+  - it: should not through an error
+    asserts:
+      - hasDocuments:
+          count: 1
+      - isKind:
+          of: EC2NodeClass

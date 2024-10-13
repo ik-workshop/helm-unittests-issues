@@ -6,7 +6,7 @@
 DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.16.1-0.6.3
 LOCAL_UNIT_TEST := $(HOME)/source/self/go-workshop/helm-unittest-tmp/untt
 
-ISSUE := issue-x
+ISSUE := issue-351
 
 SUPPORTED := chart \
   issue-156 \
@@ -32,7 +32,8 @@ SUPPORTED := chart \
 	issue-426 \
 	issue-429 \
 	issue-431 \
-	issue-x
+	issue-x \
+	issue-351
 
 FILTER_FOLDER := $(filter $(folder),$(SUPPORTED))
 
