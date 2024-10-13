@@ -98,9 +98,9 @@ deps: ## Helm dependencies
 
 # helm plugin install https://github.com/helm-unittest/helm-unittest.git
 # helm plugin update unittest
-unit-test-plugin: ## Execute Unit tests locally with plugin
+unit-test-plugin: ## Execute Unit tests locally with plugin --debugPlugin
 	$(info Running unit tests (upstream) for $(ISSUE)...)
-	@helm unittest -f 'tests/*.yaml' --debugPlugin $(ISSUE)
+	@helm unittest -f 'tests/*.yaml' $(ISSUE)
 
 unit-test-local: ## Execute Unit tests with locally build (--debugPlugin)
 	$(info Running unit tests for $(ISSUE)...)

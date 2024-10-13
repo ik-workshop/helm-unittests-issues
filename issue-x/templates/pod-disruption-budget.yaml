@@ -3,13 +3,11 @@ apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
   labels:
-    app: {{ template "gitlab-runner.fullname" . }}
-    chart: {{ template "gitlab-runner.chart" . }}
+    app: "gitlab-runner"
+    chart: "gitlab-chart"
     app.kubernetes.io/managed-by: Helm
-    heritage: {{ .Release.Service }}
-    release: {{ .Release.Name }}
-  name: {{ template "gitlab-runner.fullname" . }}
-  namespace: {{ .Release.Namespace | quote }}
+  name: "gitlab-runner"
+  namespace: "gitlab-ns"
 spec:
   {{- if not .Values.managerPdb -}}
   {{ fail "Error: At least one managerPdb.minAvailable or managerPdb.maxUnavailable must be set." }}
@@ -25,4 +23,4 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      app: {{ template "gitlab-runner.fullname" . }}
+      app: "gitlab-runner"
