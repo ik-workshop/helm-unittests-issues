@@ -1,0 +1,12 @@
+suite: Full Snapshot
+# chart:
+#   version: 1.2.3
+tests:
+  - it: matches the snapshot
+    set:
+      postgresql:
+        postgresPassword: password
+      another-postgresql:
+        postgresPassword: password
+    asserts:
+      - matchSnapshot: {}
