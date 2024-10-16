@@ -1,1 +1,4 @@
 command: "echo test this"
+
+# another-postgresql:
+#   enabled: true
