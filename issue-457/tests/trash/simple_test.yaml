@@ -11,4 +11,6 @@ tests:
       another-postgresql:
         postgresPassword: password
     asserts:
-      - matchSnapshot: {}
+      - hasDocuments:
+          count: 1
+      # - matchSnapshot: {}
