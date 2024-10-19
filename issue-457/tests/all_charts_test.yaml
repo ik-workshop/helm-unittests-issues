@@ -16,6 +16,7 @@ tests:
           path: metadata.labels["helm.sh/chart"]
           pattern: "^.*-1.2.3"
         template: charts/cert-manager/templates/deployment.yaml
+      - matchSnapshot: {}
 
   - it: should render chart with dependencies and test level version override
     templates:
