@@ -2,3 +2,7 @@ command: "echo test this"
 
 # another-postgresql:
 #   enabled: true
+cert-manager:
+  global:
+    commonLabels:
+      chart: version-1.2.3
