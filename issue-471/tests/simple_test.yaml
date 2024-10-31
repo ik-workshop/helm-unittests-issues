@@ -1,7 +1,20 @@
 suite: just a test
 templates:
-- template.yaml
-chart:
-  version: 1.2.3
+- simple.yaml
 tests:
   - it: paradox
+    template: simple.yaml
+    set:
+      hosts[1]: hotpatch
+    asserts:
+      - notEqual:
+          path: anArrayValues.rules[0].host
+          value: null
+      - equal:
+          path: anArrayValues.rules
+          value:
+            - host: null
+            - host: hotpatch1
+      - equal:
+          path: anArrayValues.rules[1].host
+          value: hotpatch

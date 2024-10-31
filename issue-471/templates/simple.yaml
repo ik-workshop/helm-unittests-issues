@@ -1,5 +1,6 @@
 anArray: {{ .Values.hosts }}
 anArrayValues:
+  rules:
   {{- range $host := .Values.hosts }}
     - host: {{ $host }}
   {{- end }}
