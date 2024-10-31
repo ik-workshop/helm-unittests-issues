@@ -6,7 +6,7 @@
 DOCKER_HELM_UNITITEST_IMAGE := helmunittest/helm-unittest:3.16.1-0.6.3
 LOCAL_UNIT_TEST := $(HOME)/source/self/go-workshop/helm-unittest-tmp/untt
 
-ISSUE := issue-457
+ISSUE := issue-471
 
 SUPPORTED := chart \
   issue-156 \
@@ -34,7 +34,8 @@ SUPPORTED := chart \
 	issue-431 \
 	issue-x \
 	issue-351 \
-	issue-457
+	issue-457 \
+	issue-471
 
 FILTER_FOLDER := $(filter $(folder),$(SUPPORTED))
 
@@ -93,7 +94,10 @@ template: ## Helm template to validate
 	@helm template namespaces $(ISSUE) \
 		--output-dir .output \
 		--debug \
-		--values $(ISSUE)/values.yaml
+		--values $(ISSUE)/values.yaml \
+		--set hosts[0]=abrakadabra.local \
+		--set hosts[2]=abrakadabra-v2.local \
+		--set hostsMap[1].attribute=new-attribute1
 
 deps: ## Helm dependencies
 	@helm dependency build $(ISSUE)

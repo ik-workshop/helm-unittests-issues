@@ -1,0 +1,9 @@
+apiVersion: v2
+description: An example chart with customized subchart
+name: with-subchart
+version: 0.1.0
+issueLink: https://github.com/helm-unittest/helm-unittest/issues/471
+supportedLinks:
+- https://codeberg.org/forgejo-contrib/forgejo-helm
+todo:
+- make sure set values in root level

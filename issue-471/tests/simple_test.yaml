@@ -1,0 +1,7 @@
+suite: just a test
+templates:
+- template.yaml
+chart:
+  version: 1.2.3
+tests:
+  - it: paradox

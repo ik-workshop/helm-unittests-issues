@@ -1,0 +1,12 @@
+anArray: {{ .Values.hosts }}
+anArrayValues:
+  {{- range $host := .Values.hosts }}
+    - host: {{ $host }}
+  {{- end }}
+
+# test
+anHostMap:
+  {{- range $el := .Values.hostsMap }}
+    - name: {{ $el.name }}
+      attribute: {{ $el.attribute }}
+  {{- end -}}
