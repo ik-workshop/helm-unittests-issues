@@ -1,2 +1,3 @@
+# ISSUE 497
 
-# - matchSnapshot: {}
+![reproduced stack trace](./assets/stack-trace.png)
