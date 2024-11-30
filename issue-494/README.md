@@ -1,3 +1,3 @@
-# ISSUE 497
+# ISSUE 494
 
-![reproduced stack trace](./assets/evidence.png)
+![reproduced issue](./assets/before.png)
