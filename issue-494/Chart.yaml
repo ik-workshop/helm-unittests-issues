@@ -1,0 +1,7 @@
+apiVersion: v2
+description: An example chart with customized subchart
+name: base64-decode-issue
+version: 0.1.0
+issueLink: https://github.com/helm-unittest/helm-unittest/issues/494
+supportedLinks:
+- https://github.com/helm-unittest/helm-unittest/issues/494
