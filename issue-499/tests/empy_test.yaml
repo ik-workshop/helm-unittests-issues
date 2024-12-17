@@ -1,0 +1,15 @@
+suite: Test empty template
+templates:
+  - validation.yaml
+tests:
+  - it: should fail when No failed document
+    asserts:
+    - failedTemplate:
+        errorMessage: "`runAsNonRoot` is set to `true` but `runAsUser` is set to `0` (root)"
+    # - failedTemplate:
+    #     errorMessage: "\\\(root\\\)"
+    # - failedTemplate:
+    #     errorPattern: |-
+    #       \\(root\\)
+    - failedTemplate:
+        errorPattern: "`runAsNonRoot` is set to `true` but `runAsUser` is set to `0` (root)"

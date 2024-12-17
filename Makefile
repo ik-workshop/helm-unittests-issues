@@ -35,9 +35,10 @@ SUPPORTED := chart \
 	issue-457 \
 	issue-471 \
 	issue-494 \
-	issue-497
+	issue-497 \
+	issue-499
 
-ISSUE := issue-494
+ISSUE := issue-471
 
 FILTER_FOLDER := $(filter $(folder),$(SUPPORTED))
 
@@ -91,7 +92,7 @@ unit-test-loop: check-issue ## Execute in the loop. 20 times
         ((number = number + 1)) ; \
   done
 
-template: ## Helm template to validate
+template-set: ## Helm template to validate
 	$(info Running helm template for $(ISSUE)...)
 	@helm template namespaces $(ISSUE) \
 		--output-dir .output \
@@ -100,6 +101,13 @@ template: ## Helm template to validate
 		--set hosts[0]=abrakadabra.local \
 		--set hosts[2]=abrakadabra-v2.local \
 		--set hostsMap[1].attribute=new-attribute1
+
+template: ## Helm template to validate
+	$(info Running helm template for $(ISSUE)...)
+	@helm template namespaces $(ISSUE) \
+		--output-dir .output \
+		--debug \
+		--values $(ISSUE)/values.yaml
 
 deps: ## Helm dependencies
 	@helm dependency build $(ISSUE)

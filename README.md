@@ -42,3 +42,5 @@
 
 [governance.link-checker.badge]: https://github.com/ik-workshop/helm-unittests-issues/actions/workflows/governance.links-checker.yml/badge.svg
 [governance.link-checker.status]: https://github.com/ik-workshop/helm-unittests-issues/actions/workflows/governance.links-checker.yml
+
+`runAsNonRoot` is set to `false` but `runAsUser` is not set to `0`

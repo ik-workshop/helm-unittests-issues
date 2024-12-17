@@ -1,0 +1,9 @@
+hosts:
+- chart-example.local
+- chart-example.remote
+
+hostsMap:
+- name: value0
+  attribute: attribute0
+- name: value1
+  attribute: attribute1
