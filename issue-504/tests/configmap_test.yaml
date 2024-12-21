@@ -1,5 +1,5 @@
 ---
-suite: "test skip single test"
+suite: "suite with multiple tests, where skip single test"
 templates:
   - templates/configmap.yaml
 tests:
