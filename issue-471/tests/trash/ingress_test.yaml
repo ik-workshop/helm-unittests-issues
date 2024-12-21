@@ -1,0 +1,28 @@
+suite: ingress under
+templates:
+- ingress.yaml
+set:
+  ingress:
+    enabled: true
+    hosts[1]: chart-example.suite-level
+tests:
+  - it: first test
+    set:
+      ingress:
+        enabled: true
+        hosts[1]: chart-example.job-level
+    asserts:
+      - matchSnapshot: {}
+      - exists:
+          path: spec.rules[?(@.host == "chart-example.local")]
+
+  - it: job level override test
+    # set:
+    #   ingress:
+    #     hosts[1]: chart-example.job-level
+    asserts:
+      - matchSnapshot: {}
+      - exists:
+          path: spec.rules[?(@.host == "chart-example.local")]
+      - exists:
+          path: spec.rules[?(@.host == "chart-example.job-level")]

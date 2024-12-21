@@ -1,20 +1,29 @@
 suite: just a test
 templates:
 - simple.yaml
+set:
+  hosts[1]: SUITE-host-set-1
+  ingress:
+    hosts[1]: SUITE-example.local-1
 tests:
   - it: paradox
     template: simple.yaml
-    set:
-      hosts[1]: hotpatch
+    # set:
+    #   hosts[1]: job-host-set-1
     asserts:
-      - notEqual:
-          path: anArrayValues.rules[0].host
-          value: null
+      # - notEqual:
+      #     path: anArrayValues.rules[0].host
+      #     value: null
       - equal:
           path: anArrayValues.rules
           value:
-            - host: null
-            - host: hotpatch1
-      - equal:
-          path: anArrayValues.rules[1].host
-          value: hotpatch
+            - host: chart-example.local
+            - host: SUITE-host-set-1
+      # - equal:
+      #     path: anArrayValues.rules
+      #     value:
+      #       - host: null
+      #       - host: hotpatch1
+      # - equal:
+      #     path: anArrayValues.rules[1].host
+      #     value: hotpatch

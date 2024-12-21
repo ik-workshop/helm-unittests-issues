@@ -1,6 +1,6 @@
 apiVersion: v2
 description: An example chart with customized subchart
-name: with-subchart
+name: array-substitution
 version: 0.1.0
 issueLink: https://github.com/helm-unittest/helm-unittest/issues/471
 supportedLinks:

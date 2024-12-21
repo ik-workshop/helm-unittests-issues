@@ -1,0 +1,28 @@
+first test:
+  1: |
+    apiVersion: extensions/v1beta1
+    kind: Ingress
+    metadata:
+      name: ingress-under-test
+    spec:
+      rules:
+        - host: chart-example.local
+          http:
+            paths:
+              - backend:
+                  serviceName: my-test-service
+                path: /
+job level override test:
+  1: |
+    apiVersion: extensions/v1beta1
+    kind: Ingress
+    metadata:
+      name: ingress-under-test
+    spec:
+      rules:
+        - host: chart-example.local
+          http:
+            paths:
+              - backend:
+                  serviceName: my-test-service
+                path: /

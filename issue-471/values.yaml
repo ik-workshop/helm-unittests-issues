@@ -1,9 +1,14 @@
 hosts:
-- chart-example.local
+- chart-hosts-example.local
 - chart-example.remote
 
-hostsMap:
-- name: value0
-  attribute: attribute0
-- name: value1
-  attribute: attribute1
+# tests:
+#   hostsMap:
+#   - name: value0
+#     attribute: attribute0
+#   - name: value1
+#     attribute: attribute1
+
+ingress:
+  hosts:
+  - chart-ingress-example.local
