@@ -1,10 +1,30 @@
-suite: test wardend service
+suite: test skip suite level
 templates:
   - simple.yaml
-skip: true
-  # - reason: "This test is not ready yet"
+skip:
+  reason: "This suite 'abkaradabra' is not ready yet"
 tests:
   - it: "should create Service if node is enabled"
+    set:
+      node:
+        enabled: true
+    asserts:
+      - hasDocuments:
+          count: 1
+      - isKind:
+          of: Service
+
+  - it: "should second test"
+    set:
+      node:
+        enabled: true
+    asserts:
+      - hasDocuments:
+          count: 1
+      - isKind:
+          of: Service
+
+  - it: "should third test"
     set:
       node:
         enabled: true
