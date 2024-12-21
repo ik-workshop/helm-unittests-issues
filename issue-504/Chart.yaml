@@ -1,0 +1,7 @@
+apiVersion: v2
+description: Allow for skipping specific tests
+name: skip-tests
+version: 0.1.0
+issueLink: https://github.com/helm-unittest/helm-unittest/issues/504
+supportedLinks:
+- https://github.com/helm-unittest/helm-unittest/issues/504

@@ -36,9 +36,10 @@ SUPPORTED := chart \
 	issue-471 \
 	issue-494 \
 	issue-497 \
-	issue-499
+	issue-499 \
+	issue-504
 
-ISSUE := issue-471
+ISSUE := issue-504
 
 FILTER_FOLDER := $(filter $(folder),$(SUPPORTED))
 
