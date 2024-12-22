@@ -1,0 +1,11 @@
+suite: Test empty template
+templates:
+  - validation.tpl
+tests:
+  - it: should fail when No failed document
+    asserts:
+    - failedTemplate:
+        errorPattern: |-
+          `runAsNonRoot` is set to `true` but `runAsUser` is set to `0` \(root\)
+    - failedTemplate:
+        errorMessage: "`runAsNonRoot` is set to `true` but `runAsUser` is set to `0` (root)"

@@ -44,3 +44,16 @@
 [governance.link-checker.status]: https://github.com/ik-workshop/helm-unittests-issues/actions/workflows/governance.links-checker.yml
 
 `runAsNonRoot` is set to `false` but `runAsUser` is not set to `0`
+
+   # - failedTemplate:
+    #     errorMessage: "`runAsNonRoot` is set to `true` but `runAsUser` is set to `0` (root)"
+    # - failedTemplate:
+    #     errorMessage: "\\\(root\\\)"
+    # - failedTemplate:
+    #     errorPattern: |-
+    #       \\(root\\)
+
+        - failedTemplate:
+        errorPattern: "`runAsNonRoot` is set to `true` but `runAsUser` is set to `0` (root)"
+    - failedTemplate:
+        errorMessage: "`runAsNonRoot` is set to `true` but `runAsUser` is set to `0` (root)"
