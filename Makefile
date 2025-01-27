@@ -37,9 +37,10 @@ SUPPORTED := chart \
 	issue-494 \
 	issue-497 \
 	issue-499 \
-	issue-504
+	issue-504 \
+	issue-555
 
-ISSUE := issue-499
+ISSUE := issue-555
 
 FILTER_FOLDER := $(filter $(folder),$(SUPPORTED))
 
@@ -119,9 +120,9 @@ unit-test-plugin: ## Execute Unit tests locally with plugin --debugPlugin
 	$(info Running unit tests (upstream) for $(ISSUE)...)
 	@helm unittest -f 'tests/*.yaml' --debugPlugin $(ISSUE)
 
-unit-test-local: ## Execute Unit tests with locally build (--debugPlugin)
+unit-test-local: ## Execute Unit tests with locally build (--debugPlugin) --debugPlugin
 	$(info Running unit tests for $(ISSUE)...)
-	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --debugPlugin  $(ISSUE)
+	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' $(ISSUE)
 
 unit-test-current: ## Execute Unit tests with locally build (--debugPlugin)
 	@$(LOCAL_UNIT_TEST) -f 'tests/*.yaml' --coverage $(ISSUE)

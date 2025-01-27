@@ -1,0 +1,20 @@
+suite: document selector to match any template
+templates:
+  - "*"
+tests:
+  - it: full document selector
+    # set:
+    #   enabled: true
+    # documentSelector:
+    #   # path: kind
+    #   # value: ConfigMap
+    #   skipEmptyTemplates: true
+    asserts:
+      - exists:
+          path: kind
+        documentSelector:
+          # skipEmptyTemplates: true
+        #   path: kind
+        #   value: Configmap
+
+# MORE tests required
